@@ -1,0 +1,20 @@
+const COLORS = {
+    BLUE: '#2B11C3',
+    GREY_PLACEHOLDER: '#C4C4C4',
+    DARKBLUE: '#0A002C',
+    PRIMARY: '#eb1650',
+    WHITE: '#FFFFFF',
+    OVERLAY_DARK_FALLBACK: 'rgba(0, 0, 0, 0.2)',
+    GREY_SUBTITLE: '#CCCCCC',
+    DOT_COLOR: '#E3006E',
+    GRAY: 'rgba(255, 255, 255, 0.3)',
+    BACKGROUND: '#0A002C',
+    BORDER: '#323030',
+    EARLYBIRD_GRADIENT: '#15093F',
+    PINK: '#EB1650',
+    BLACK: '#000000',
+    BORDER_CARD: '#BC63B34D',
+    RED: '#FF3B30',
+};
+
+export default COLORS;
