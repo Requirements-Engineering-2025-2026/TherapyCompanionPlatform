@@ -1,5 +1,5 @@
-import { useMemo } from 'react';
-import { KeyboardAvoidingView, ScrollView, Text, useWindowDimensions, View } from 'react-native';
+import { useMemo, useState } from 'react';
+import { KeyboardAvoidingView, ScrollView, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native';
 import Button from '../../components/Button';
 import TextBox from '../../components/TextBox';
 import COLORS from '../../constants/colors';
@@ -11,7 +11,7 @@ import BaseComponent from '../../components/BaseComponent';
 const SignUpScreen = () => {
     const { width, height } = useWindowDimensions();
     const isLandscape = width > height;
-
+    const [role, setRole] = useState('client');
     const {
         name,
         email,
@@ -127,7 +127,42 @@ const SignUpScreen = () => {
                             <Text style={styles.errorText}>{confirmPasswordError}</Text>
                         )}
                     </View>
+                    
+          <View style={styles.checkboxContainer}>
+            <TouchableOpacity
+              style={[
+                styles.checkboxButton,
+                role === 'client' && styles.checkboxSelected,
+              ]}
+              onPress={() => setRole('client')}
+            >
+              <Text
+                style={[
+                  styles.checkboxText,
+                  role === 'client' && styles.checkboxTextSelected,
+                ]}
+              >
+                Client
+              </Text>
+            </TouchableOpacity>
 
+            <TouchableOpacity
+              style={[
+                styles.checkboxButton,
+                role === 'psychologist' && styles.checkboxSelected,
+              ]}
+              onPress={() => setRole('psychologist')}
+            >
+              <Text
+                style={[
+                  styles.checkboxText,
+                  role === 'psychologist' && styles.checkboxTextSelected,
+                ]}
+              >
+                Psychologist
+              </Text>
+            </TouchableOpacity>
+          </View>
                     <Button
                         style={styles.signUpButton}
                         textStyle={styles.signUpButtonText}

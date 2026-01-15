@@ -19,10 +19,10 @@ export const useLoginLogic = () => {
     const isEmailValid = emailRegex.test(email);
 
     const handleSignIn = useCallback(async () => {
+        navigate('/home'); 
         setIsLoading(true);
         setLoginError('');
         setSubmitAttempted(true);
-
         try {
             // ===== Commented AuthService login =====
             // const result = await AuthService.signIn({ email, password });
@@ -33,11 +33,7 @@ export const useLoginLogic = () => {
             //     navigate('/home'); // React Router navigation
             // } else {
             //     setLoginError('Email or password is incorrect.');
-            // }
-
-            // ===== Temporary fake success =====
-            await setValueInLocalStorage('authToken', 'fake-token');
-            navigate('/home'); // React Router navigation
+            // }await setValueInLocalStorage('authToken', 'fake-token');
         } catch {
             setLoginError('Email or password is incorrect.');
         } finally {
@@ -48,10 +44,6 @@ export const useLoginLogic = () => {
     const handleLogout = useCallback(async () => {
         await deleteValueFromLocalStorage('authToken');
 
-        // ===== Commented AuthService / navigation =====
-        // navigate('/login');
-
-        // ===== Temporary fake navigation =====
         navigate('/login');
     }, [navigate]);
 

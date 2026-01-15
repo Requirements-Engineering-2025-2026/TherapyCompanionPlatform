@@ -1,95 +1,58 @@
 import { StyleSheet } from 'react-native';
+
 import COLORS from '../../constants/colors';
-import gStyles from '../../utils/gStyles';
 import { typography } from '../../utils/constants/fonts';
+import gStyles from '../../utils/gStyles.ts';
+
 
 const styles = StyleSheet.create({
-  contentContainer: {
-    ...gStyles.contentContainer,
-    flex: 1,
-    paddingHorizontal: 40,
-    justifyContent: 'center',
-  },
+    contentContainer: gStyles.contentContainer,
+    titleText:{
+        ...typography.pageTitleBold,
+        color:COLORS.WHITE,
+        alignSelf:'center',
+        marginBottom:20,
+    },
+    logo: {
+        marginTop: 104,
+        alignSelf: 'center',
+    },
+    inputContainer: {
+        marginTop: 24,
+    },
+    userIcon: {
+        marginBottom: 10,
+    },
+    errorTextContainer: {
+        height: 20,
+    },
+    title: gStyles.title,
+    textBoxContainer: { ...gStyles.textBoxContainer, marginTop: 0 },
+    textBoxInput: gStyles.textBoxInput,
 
-  logo: {
-    marginTop: 40,
-    alignSelf: 'center',
-  },
+    errorText: {
+        color: COLORS.WHITE,
+        marginLeft: 40,
+        marginTop: 0.5,
+        ...typography.bodyXsRegular,
+    },
 
-  inputContainer: {
-    marginTop: 24,
-    maxWidth: 400,
-    alignSelf: 'center',
-    width: 400,
-  },
+    signInButton: {
+        ...gStyles.primaryButton,
+        marginTop: 30,
+    },
+    signInButtonText: gStyles.primaryButtonText,
 
-  userIcon: {
-    marginBottom: 10,
-    alignSelf: 'center',
-  },
+    forgotPasswordText: gStyles.textButton,
 
-  errorTextContainer: {
-    height: 20,
-  },
+    notMemberContainer: {
+        ...gStyles.bottomSectionContainer,
+        marginTop: 130,
+    },
+    notMemberText: gStyles.bottomSectionText,
 
-  title: {
-    ...gStyles.title,
-    textAlign: 'center',
-    fontSize: 24,
-    marginBottom: 20,
-  },
-
-  textBoxContainer: {
-    ...gStyles.textBoxContainer,
-    marginTop: 0,
-    width: 400,
-  },
-
-  textBoxInput: {
-    ...gStyles.textBoxInput,
-  },
-
-  errorText: {
-    color: COLORS.WHITE,
-    marginLeft: 0,
-    marginTop: 2,
-    ...typography.bodyXsRegular,
-  },
-
-  signInButton: {
-    ...gStyles.primaryButton,
-    marginTop: 20,
-    width: '100%',
-    alignSelf: 'center',
-  },
-
-  signInButtonText: gStyles.primaryButtonText,
-
-  forgotPasswordText: {
-    ...gStyles.textButton,
-    textAlign: 'center',
-    marginTop: 10,
-  },
-
-  notMemberContainer: {
-    marginTop: 40,
-    alignItems: 'center',
-  },
-
-  notMemberText: {
-    ...gStyles.bottomSectionText,
-    marginBottom: 10,
-    textAlign: 'center',
-  },
-
-  signUpButton: {
-    ...gStyles.secondaryButton,
-    width: '100%',
-    maxWidth: 400,
-    alignSelf: 'center',
-  },
-
-  signUpButtonText: gStyles.secondaryButtonText,
+    signUpButton: gStyles.secondaryButton,
+    signUpButtonText: gStyles.secondaryButtonText,
 });
 
 export default styles;

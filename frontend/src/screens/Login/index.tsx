@@ -47,7 +47,7 @@ const LoginScreen = () => {
     const Content = (
         <>
             <View style={styles.contentContainer}>
-               
+               <Text style={styles.titleText}>Therapy Companion</Text>
                 <Text style={styles.title}>{'Sign In'}</Text>
 
                 <View style={styles.inputContainer}>
@@ -91,7 +91,6 @@ const LoginScreen = () => {
                         textStyle={styles.signInButtonText}
                         title={isLoading ? 'Signing In...' : 'Sign In'}
                         onPress={handleSignIn}
-                        disabled={isLoading || isSignInDisabled}
                     />
 
                     <PlainTextButton onPress={handleForgotPassword} style={styles.forgotPasswordText}>

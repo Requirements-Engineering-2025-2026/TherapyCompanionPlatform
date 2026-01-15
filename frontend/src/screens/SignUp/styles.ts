@@ -33,7 +33,34 @@ const styles = StyleSheet.create({
         marginTop: 0.5,
         ...typography.bodyXsRegular,
     },
-
+    checkboxContainer: {
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  marginTop: 10,
+  marginBottom: 20,
+},
+checkboxButton: {
+  flex: 1,
+  borderWidth: 1,
+  borderColor: '#ccc',
+  paddingVertical: 8,
+  borderRadius: 4,
+  marginHorizontal: 5,
+  alignItems: 'center',
+  backgroundColor: '#fff',
+},
+checkboxSelected: {
+  backgroundColor: COLORS.DARKBLUE,
+},
+checkboxText: {
+  fontSize: 16,
+  color: '#333',
+  fontWeight: '600',
+},
+checkboxTextSelected: {
+  color: '#fff',
+}
+,
     checkBoxText: gStyles.checkboxContainer,
 
     signUpButton: gStyles.primaryButton,

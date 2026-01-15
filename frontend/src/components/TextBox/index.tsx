@@ -1,8 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import {TextInput,TouchableOpacity,View,} from 'react-native';
 import type { TextInputProps,TextStyle,ViewStyle, } from 'react-native';
-import EyeIcon from '../../assets/icons/eye.svg';
-import EyeOffIcon from '../../assets/icons/eye_off.svg';
 import COLORS from '../../constants/colors';
 
 import styles from './styles';
@@ -104,7 +102,6 @@ const TextBox: React.FC<TextBoxProps> = ({
                         accessibilityRole="button"
                         accessibilityLabel={toggleAccessibilityLabel}
                     >
-                        
                     </TouchableOpacity>
                 )}
             </View>
