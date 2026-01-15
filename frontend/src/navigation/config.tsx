@@ -1,5 +1,6 @@
 
 import { HomeScreen, LoginScreen, SignUpScreen, SplashScreen } from "../screens";
+import JournalScreen from "../screens/Journal";
 import { STACK_SCREENS } from "./consts";
 
 export const STACK_NAVIGATOR_SCREENS = [
@@ -9,5 +10,10 @@ export const STACK_NAVIGATOR_SCREENS = [
     {
         name: STACK_SCREENS.HOME,
         component: HomeScreen,
-    },
+    },   
+];
+
+export const MENU_SCREENS = [
+    {name: STACK_SCREENS.HOME,component: HomeScreen},
+    {name: STACK_SCREENS.JOURNAL,component: JournalScreen},
 ];
