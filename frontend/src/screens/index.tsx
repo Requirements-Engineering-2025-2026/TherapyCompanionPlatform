@@ -17,3 +17,7 @@ export const SplashScreen = lazyScreen(() => import('./Splash'), {
     fallback: <LoadingScreen />,
 });
 
+export const JournalScreen = lazyScreen(() => import('./Journal'), {
+    fallback: <LoadingScreen />,
+});
+

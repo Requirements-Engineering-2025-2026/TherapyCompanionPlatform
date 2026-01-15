@@ -5,4 +5,5 @@ export type RootStackParamsList = {
     [STACK_SCREENS.LOGIN]: undefined;
     [STACK_SCREENS.SIGN_UP]: undefined;
     [STACK_SCREENS.HOME]: undefined;
+    [STACK_SCREENS.JOURNAL]: undefined;
 };
