@@ -26,28 +26,38 @@ export const useSignUpLogic = () => {
         }
 
         setIsLoading(true);
+        setRegisterError('');
 
         try {
-            // ===== Commented AuthService logic =====
-            /*
-            const result = await AuthService.signUp({
-                name: name.trim(),
-                email: email.trim().toLowerCase(),
+            const response = await fetch('http://localhost:3003/auth/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username: name.trim(),
+                email: email.trim(),
                 password,
+                type: 'patient',
+            }),
             });
 
-            if (result.success) {
-                navigate('/main'); // Replace 'MainTabs' with web route
-            } else {
-                setRegisterError('Error signing up.'); // replace t(errorSignup)
-            }
-            */
 
-            // ===== Temporary fake signup for web =====
-            await new Promise(resolve => setTimeout(resolve, 500)); // simulate network delay
-            navigate('/main'); // successful signup redirects to main page
+            if (!response.ok) {
+                const err = await response.json().catch(() => null);
+                const msg =
+                    (typeof err?.message === 'string' && err.message) ||
+                    (Array.isArray(err?.message) && err.message.join(', ')) ||
+                    'Error signing up.';
+                setRegisterError(msg);
+                return;
+            }
+
+            // Some backends return token/user, some return just success.
+            // We don't need the response for navigation, so just proceed.
+            navigate('/login');
         } catch {
-            setRegisterError('Something went wrong, please try again.'); // replace t(tryAgainSignup)
+            setRegisterError('Something went wrong, please try again.');
         } finally {
             setIsLoading(false);
         }

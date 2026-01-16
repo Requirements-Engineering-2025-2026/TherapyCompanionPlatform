@@ -14,10 +14,17 @@ export class MoodService {
     @InjectRepository(MoodEntry) private repo: Repository<MoodEntry>,
   ) {}
 
-  create(user: User, data: Partial<MoodEntry>) {
-    const entry = this.repo.create({ ...data, user } as any);
-    return this.repo.save(entry);
-  }
+  create(user: User, data: { content: string; scale: number; emoji?: string }) {
+  const entry = this.repo.create({
+    content: data.content,
+    scale: data.scale,
+    emoji: data.emoji,
+    user,
+  });
+
+  return this.repo.save(entry);
+}
+
 
   findAllByUser(userId: number) {
     return this.repo.find({

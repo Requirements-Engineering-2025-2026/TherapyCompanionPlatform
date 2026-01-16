@@ -22,7 +22,7 @@ export class MoodEntry {
   @Column('int')
   scale: number;
 
-  @Column({ nullable: true })
+  @Column({ type:"text", nullable: true })
   emoji: string;
 
   @ManyToOne(() => User, (u) => u.moodEntries, { onDelete: 'CASCADE' })

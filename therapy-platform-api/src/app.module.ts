@@ -32,6 +32,7 @@ import { ExerciseEvaluation } from './entities/exercise-evaluation.entity';
         ExerciseEvaluation,
         Alert,
       ],
+       autoLoadEntities: true,
       synchronize: true, // set to false in production and use migrations
     }),
     AuthModule,

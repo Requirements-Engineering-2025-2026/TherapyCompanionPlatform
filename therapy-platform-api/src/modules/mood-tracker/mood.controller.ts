@@ -36,6 +36,8 @@ export class MoodController {
 
   @Post()
   async create(@Req() req: JwtRequest, @Body() dto: CreateMoodDto) {
+    console.log('RAW BODY DTO:', dto);
+  console.log('CONTENT VALUE:', dto?.content);
     const user = await this.usersService.findById(req.user.id);
     if (!user) {
       throw new NotFoundException('User not found');

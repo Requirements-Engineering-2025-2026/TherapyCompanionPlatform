@@ -7,6 +7,7 @@ import {
   ScrollView,
 } from 'react-native';
 import styles from './styles';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const emojis = ['😞', '😐', '🙂', '😊', '😁'];
 
@@ -15,20 +16,54 @@ const Home = () => {
   const [moodText, setMoodText] = useState('');
   const [emoji, setEmoji] = useState<string | null>(null);
   const [hasMoodToday, setHasMoodToday] = useState(false);
+  
+  const getAuthToken = async (): Promise<string | null> => {
+  try {
+    return await AsyncStorage.getItem('authToken');
+  } catch {
+    return null;
+  }
+};
 
-  const handleSaveMood = () => {
-    if (!emoji || !moodScore) return;
 
-    const moodEntry = {
-      date: new Date().toDateString(),
-      score: moodScore,
-      emoji,
-      text: moodText,
-    };
+  const handleSaveMood = async () => {
+  if (!emoji || !moodScore) return;
+  
+  const token = await getAuthToken();
+  if (!token) {
+    console.error('No auth token found');
+    return;
+  }
+  console.log(moodText,moodScore,emoji)
+  try {
+    console.log('SENDING BODY:', {
+  content: moodText,
+  scale: moodScore,
+  emoji,
+});
 
-    console.log('Saved mood:', moodEntry);
+    await fetch('http://localhost:3003/mood', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${token}`,
+  },
+  body: JSON.stringify({
+    content: moodText.trim(),     
+    scale: moodScore,      
+    emoji,                 
+  }),
+});
+
+   
+    
+
     setHasMoodToday(true);
-  };
+  } catch (error) {
+    console.error('Failed to save mood', error);
+  }
+};
+
 
   return (
     <View style={styles.container}>
