@@ -11,6 +11,7 @@ export const STACK_SCREENS = {
     LOGIN: 'Login',
     SIGN_UP: 'SignUp',
     HOME: 'Home',
+    JOURNAL: 'Journal'
 } as const;
 
 export type STACK_SCREENS = typeof STACK_SCREENS[keyof typeof STACK_SCREENS];
